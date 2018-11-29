@@ -25,6 +25,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: validate
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     open-in-view: true
     properties:
       hibernate:
