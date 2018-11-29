@@ -3,7 +3,7 @@ package com.zgs.account.dao;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.zgs.account.AccountApplicationTests;
-import com.zgs.account.bean.base.Account;
+import com.zgs.account.bean.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.junit.Assert;

@@ -1,5 +1,7 @@
-package com.zgs.account.bean.base;
+package com.zgs.account.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zgs.account.bean.base.AbstractAuditModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,11 +32,13 @@ public class Account extends AbstractAuditModel {
     /**
      * 加密后的密码
      */
+    @JsonIgnore
     private String password;
 
     /**
      * 加密使用的盐
      */
+    @JsonIgnore
     private String salt;
 
     /**

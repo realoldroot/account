@@ -2,11 +2,15 @@ package com.zgs.account.model;
 
 import com.zgs.account.constant.Status;
 import com.zgs.account.exception.BaseException;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * @author zhengenshen
  * @date 2018-11-29 16:02
  */
+@Builder
+@Data
 public class ApiResponse {
 
     /**
