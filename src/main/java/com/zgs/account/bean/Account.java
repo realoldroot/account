@@ -1,6 +1,8 @@
 package com.zgs.account.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zgs.account.constant.EnumAccount.EAccountStatus;
+import com.zgs.account.constant.EnumAccount.ESex;
 import lombok.*;
 
 import javax.persistence.*;
@@ -74,12 +76,4 @@ public class Account implements Serializable {
      */
     private long lastLoginTime;
 
-    public enum ESex {
-        MAN, WOMAN
-    }
-
-    @Getter
-    public enum EAccountStatus {
-        DISABLE, ENABLE
-    }
 }

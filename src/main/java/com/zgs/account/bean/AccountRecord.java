@@ -1,5 +1,6 @@
 package com.zgs.account.bean;
 
+import com.zgs.account.constant.EnumAccount.ELoginType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -43,8 +44,5 @@ public class AccountRecord implements Serializable {
      */
     private long createTime;
 
-    public enum ELoginType {
-        WEB, APP
-    }
 
 }
