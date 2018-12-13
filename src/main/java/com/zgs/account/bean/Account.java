@@ -1,65 +1,85 @@
 package com.zgs.account.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.zgs.account.bean.base.AbstractAuditModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.io.Serializable;
 
 /**
  * @author zhengenshen
  * @date 2018-11-29 14:45
  */
-@Data
-@Entity
+@Getter
+@Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "account")
-public class Account extends AbstractAuditModel {
+@NoArgsConstructor
+@Entity
+@Table
+public class Account implements Serializable {
+
+    /**
+     * 主键
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /**
      * 用户名
      */
-    private String name;
+    private String username;
 
     /**
-     * 加密后的密码
+     * 密码
      */
     @JsonIgnore
     private String password;
 
     /**
-     * 加密使用的盐
+     * 盐
      */
     @JsonIgnore
     private String salt;
 
+    @Enumerated(EnumType.ORDINAL)
+    private ESex sex;
+
     /**
      * 邮箱
      */
+    @Email
     private String email;
 
     /**
      * 手机号码
      */
-    @Column(name = "phone_number")
+    @Column(updatable = false)
     private String phoneNumber;
 
     /**
      * 状态，-1：逻辑删除，0：禁用，1：启用
      */
-    private Integer status;
+    @Enumerated(EnumType.ORDINAL)
+    private EAccountStatus status;
 
+    /**
+     * 创建时间
+     */
+    private long createTime;
     /**
      * 上次登录时间
      */
-    @Column(name = "last_login_time")
-    private LocalDateTime lastLoginTime;
+    private long lastLoginTime;
+
+    public enum ESex {
+        MAN, WOMAN
+    }
+
+    @Getter
+    public enum EAccountStatus {
+        DISABLE, ENABLE
+    }
 }

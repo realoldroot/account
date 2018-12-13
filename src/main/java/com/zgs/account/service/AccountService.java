@@ -1,6 +1,10 @@
 package com.zgs.account.service;
 
 import com.zgs.account.bean.Account;
+import com.zgs.account.protocol.request.ReqLogin;
+import com.zgs.account.protocol.request.ReqRegister;
+import com.zgs.account.protocol.response.RepLogin;
+import com.zgs.account.protocol.response.RepRegister;
 
 /**
  * @author zhengenshen
@@ -9,4 +13,8 @@ import com.zgs.account.bean.Account;
 public interface AccountService {
 
     Account getByUserName(String username);
+
+    RepLogin login(ReqLogin params);
+
+    RepRegister register(ReqRegister params);
 }

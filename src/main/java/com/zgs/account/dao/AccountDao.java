@@ -11,8 +11,15 @@ import java.util.Optional;
  * @date 2018-11-29 14:21
  */
 @Repository
-public interface AccountDao extends JpaRepository<Account,Long> {
+public interface AccountDao extends JpaRepository<Account, Long> {
 
-    Optional<Account> getByName(String name);
+    byte DISABLE = 0;
+    byte ENABLE = 1;
+
+    Optional<Account> getByUsername(String username);
+
+    boolean existsByUsernameAndPhoneNumber(String username, String phoneNumber);
+
+    boolean existsByPhoneNumber(String phoneNumber);
 
 }

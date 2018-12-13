@@ -1,8 +1,11 @@
 package com.zgs.account.controller;
 
+import com.zgs.account.bean.Account;
 import com.zgs.account.common.DataType;
 import com.zgs.account.common.ParamType;
 import com.zgs.account.model.ApiResponse;
+import com.zgs.account.protocol.request.ReqLogin;
+import com.zgs.account.protocol.request.ReqRegister;
 import com.zgs.account.service.AccountService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,8 +36,21 @@ public class AccountController {
             paramType = ParamType.QUERY, defaultValue = "xxx")})
     @GetMapping("/getByUserName")
     public ApiResponse getByUserName(String username) {
-        val account = accountService.getByUserName(username);
+        Account account = accountService.getByUserName(username);
         log.info("多个参数用  @ApiImplicitParams");
         return ApiResponse.ofSuccess(account);
     }
+
+    @PostMapping("/login")
+    public ApiResponse login(@RequestBody ReqLogin params) {
+        val ret = accountService.login(params);
+        return ApiResponse.ofSuccess(ret);
+    }
+
+    @PostMapping("/register")
+    public ApiResponse register(@RequestBody ReqRegister params) {
+        val ret = accountService.register(params);
+        return ApiResponse.ofSuccess(ret);
+    }
+
 }

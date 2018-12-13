@@ -35,4 +35,8 @@ dependencies {
     compile 'cn.hutool:hutool-all:+'
     compile 'io.springfox:springfox-swagger2:+'
     compile 'io.springfox:springfox-swagger-ui:+'
+    compile 'com.auth0:java-jwt:+'
+    compile 'org.apache.shiro:shiro-spring:+'
+    compile 'com.google.guava:guava:27.0.1-jre'
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
 }

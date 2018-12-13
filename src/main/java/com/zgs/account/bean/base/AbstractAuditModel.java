@@ -1,11 +1,12 @@
 package com.zgs.account.bean.base;
 
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -13,9 +14,9 @@ import java.time.LocalDateTime;
  * @author zhengenshen
  * @date 2018-11-29 14:43
  */
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-@Data
+// @MappedSuperclass
+// @EntityListeners(AuditingEntityListener.class)
+// @Data
 public class AbstractAuditModel implements Serializable {
 
     /**
@@ -28,16 +29,14 @@ public class AbstractAuditModel implements Serializable {
     /**
      * 创建时间
      */
-    // @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_time", nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createTime;
 
     /**
      * 上次更新时间
      */
-    // @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "last_update_time", nullable = false)
+    @Column(nullable = false)
     @UpdateTimestamp
     private LocalDateTime lastUpdateTime;
 }
